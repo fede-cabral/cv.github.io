@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor Pro - Federico Cabral</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>📊 Gestor Personal Pro</h1>
+        <p>Operación Transeconómico</p>
+    </header>
+
+    <main>
+
+        <section class="card">
+            <h2>📌 Tareas</h2>
+            <input type="text" id="taskInput" placeholder="Nueva tarea...">
+            <button onclick="addTask()">Agregar</button>
+            <ul id="taskList"></ul>
+        </section>
+
+        <section class="card">
+            <h2>💰 Gastos</h2>
+            <input type="text" id="descInput" placeholder="Descripción">
+            <input type="number" id="amountInput" placeholder="Monto">
+            <button onclick="addExpense()">Agregar</button>
+            <ul id="expenseList"></ul>
+            <p>Total: $<span id="total">0</span></p>
+        </section>
+
+        <section class="card">
+            <h2>🎯 Metas</h2>
+            <input type="text" id="goalInput" placeholder="Nueva meta">
+            <button onclick="addGoal()">Agregar</button>
+            <ul id="goalList"></ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Creado por Federico Cabral - 2026</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
