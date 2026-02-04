@@ -15,6 +15,18 @@
     <main>
 
         <section class="card">
+    <h2>💼 Ingresos</h2>
+
+    <input type="text" id="incomeDesc" placeholder="Descripción">
+    <input type="number" id="incomeAmount" placeholder="Monto">
+
+    <button onclick="addIncome()">Agregar</button>
+
+    <ul id="incomeList"></ul>
+
+    <p>Total Ingresos: $<span id="incomeTotal">0</span></p>
+</section>
+        <section class="card">
             <h2>📌 Tareas</h2>
             <input type="text" id="taskInput" placeholder="Nueva tarea...">
             <button onclick="addTask()">Agregar</button>
@@ -49,12 +61,18 @@
 // ====== DATOS ======
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+let incomes = JSON.parse(localStorage.getItem("incomes")) || [];
 let goals = JSON.parse(localStorage.getItem("goals")) || [];
 
 // ====== ELEMENTOS ======
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
-
+        
+// Ingresos
+const incomeDesc = document.getElementById("incomeDesc");
+const incomeAmount = document.getElementById("incomeAmount");
+const incomeList = document.getElementById("incomeList");
+const incomeTotal = document.getElementById("incomeTotal");
 const descInput = document.getElementById("descInput");
 const amountInput = document.getElementById("amountInput");
 const expenseList = document.getElementById("expenseList");
@@ -68,8 +86,8 @@ function saveData() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
     localStorage.setItem("expenses", JSON.stringify(expenses));
     localStorage.setItem("goals", JSON.stringify(goals));
+    localStorage.setItem("incomes", JSON.stringify(incomes));
 }
-
 // ====== RENDER ======
 function render() {
 
@@ -105,6 +123,26 @@ function render() {
 
     totalSpan.textContent = total;
 
+    // Ingresos
+incomeList.innerHTML = "";
+let totalIncome = 0;
+
+incomes.forEach((inc,i)=>{
+    const li = document.createElement("li");
+    li.textContent = `${inc.desc} - $${inc.amount}`;
+
+    li.onclick = ()=>{
+        incomes.splice(i,1);
+        saveData();
+        render();
+    };
+
+    totalIncome += Number(inc.amount);
+    incomeList.appendChild(li);
+});
+
+incomeTotal.textContent = totalIncome;
+    
     // Metas
     goalList.innerHTML = "";
     goals.forEach((g,i)=>{
@@ -144,14 +182,21 @@ function addExpense(){
 }
 
 function addGoal(){
-    if(goalInput.value==="") return;
+   function addIncome(){
 
-    goals.push(goalInput.value);
-    goalInput.value="";
+    if(incomeDesc.value==="" || incomeAmount.value==="") return;
+
+    incomes.push({
+        desc: incomeDesc.value,
+        amount: incomeAmount.value
+    });
+
+    incomeDesc.value="";
+    incomeAmount.value="";
+
     saveData();
     render();
 }
-
 // ====== INICIAR ======
 render();
 </script>
