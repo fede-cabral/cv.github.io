@@ -66,9 +66,16 @@
     </section>
 
 </main>
-
+    
+<section class="card">
+    <h2>📈 Balance General</h2>
+    <p>Ingresos: $<span id="showIncome">0</span></p>
+    <p>Gastos: $<span id="showExpense">0</span></p>
+    <h3>Balance: <span id="balance">0</span></h3>
+</section>
 <footer>
     <p>Creado por Federico Cabral - 2026</p>
+    
 </footer>
 
 <script>
@@ -101,6 +108,9 @@ const incomeTotal = document.getElementById("incomeTotal");
 
 const goalInput = document.getElementById("goalInput");
 const goalList = document.getElementById("goalList");
+const showIncome = document.getElementById("showIncome");
+const showExpense = document.getElementById("showExpense");
+const balanceSpan = document.getElementById("balance");
 
 /////////////////////
 // GUARDAR
@@ -183,7 +193,17 @@ function render(){
     });
 
     incomeTotal.textContent = totalIncome;
+showIncome.textContent = totalIncome;
+showExpense.textContent = total;
 
+const balance = totalIncome - total;
+balanceSpan.textContent = balance;
+
+if(balance >= 0){
+    balanceSpan.style.color = "lime";
+}else{
+    balanceSpan.style.color = "red";
+}
 
     // METAS
     goalList.innerHTML = "";
