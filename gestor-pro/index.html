@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Gestor Pro - Federico Cabral</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Gestor Pro - FORJAX</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -15,281 +19,334 @@
 
 <main>
 
-    <!-- INGRESOS -->
-    <section class="card">
-        <h2>💼 Ingresos</h2>
+<!-- INGRESOS -->
+<section class="card">
+<h2>💼 Ingresos</h2>
 
-        <input type="text" id="incomeDesc" placeholder="Descripción">
-        <input type="number" id="incomeAmount" placeholder="Monto">
+<input id="incomeDesc" placeholder="Descripción">
+<input id="incomeAmount" type="number" placeholder="Monto">
 
-        <button onclick="addIncome()">Agregar</button>
+<button onclick="addIncome()">Agregar</button>
 
-        <ul id="incomeList"></ul>
+<ul id="incomeList"></ul>
 
-        <p>Total Ingresos: $<span id="incomeTotal">0</span></p>
-    </section>
+<p>Total: $<span id="incomeTotal">0</span></p>
+</section>
 
-    <!-- TAREAS -->
-    <section class="card">
-        <h2>📌 Tareas</h2>
 
-        <input type="text" id="taskInput" placeholder="Nueva tarea...">
+<!-- TAREAS -->
+<section class="card">
+<h2>📌 Tareas</h2>
 
-        <button onclick="addTask()">Agregar</button>
+<input id="taskInput" placeholder="Nueva tarea">
+<button onclick="addTask()">Agregar</button>
 
-        <ul id="taskList"></ul>
-    </section>
+<ul id="taskList"></ul>
+</section>
 
-    <!-- GASTOS -->
-    <section class="card">
-        <h2>💰 Gastos</h2>
 
-        <input type="text" id="descInput" placeholder="Descripción">
-        <input type="number" id="amountInput" placeholder="Monto">
+<!-- GASTOS -->
+<section class="card">
+<h2>💰 Gastos</h2>
 
-        <button onclick="addExpense()">Agregar</button>
+<input id="descInput" placeholder="Descripción">
+<input id="amountInput" type="number" placeholder="Monto">
 
-        <ul id="expenseList"></ul>
+<button onclick="addExpense()">Agregar</button>
 
-        <p>Total: $<span id="total">0</span></p>
-    </section>
+<ul id="expenseList"></ul>
 
-    <!-- METAS -->
-    <section class="card">
-        <h2>🎯 Metas</h2>
+<p>Total: $<span id="expenseTotal">0</span></p>
+</section>
 
-        <input type="text" id="goalInput" placeholder="Nueva meta">
 
-        <button onclick="addGoal()">Agregar</button>
+<!-- METAS -->
+<section class="card">
+<h2>🎯 Metas</h2>
 
-        <ul id="goalList"></ul>
-    </section>
+<input id="goalInput" placeholder="Nueva meta">
+<button onclick="addGoal()">Agregar</button>
+
+<ul id="goalList"></ul>
+</section>
+
+
+<!-- BALANCE -->
+<section class="card wide">
+
+<h2>📈 Balance General</h2>
+
+<p>Ingresos: $<span id="bIncome">0</span></p>
+<p>Gastos: $<span id="bExpense">0</span></p>
+
+<h3 id="balanceText"></h3>
+
+<canvas id="chart"></canvas>
+
+</section>
 
 </main>
-    
-<section class="card">
-    <h2>📈 Balance General</h2>
-    <p>Ingresos: $<span id="showIncome">0</span></p>
-    <p>Gastos: $<span id="showExpense">0</span></p>
-    <h3>Balance: <span id="balance">0</span></h3>
-</section>
+
+
 <footer>
-    <p>Creado por FORJAX - 2026</p>
-    
+<p>Creado por FORJAX - 2026</p>
 </footer>
+
 
 <script>
 
-/////////////////////
-// DATOS
-/////////////////////
+/* ================= DATOS ================= */
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks    = JSON.parse(localStorage.getItem("tasks"))    || [];
+let incomes  = JSON.parse(localStorage.getItem("incomes"))  || [];
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-let incomes = JSON.parse(localStorage.getItem("incomes")) || [];
-let goals = JSON.parse(localStorage.getItem("goals")) || [];
+let goals    = JSON.parse(localStorage.getItem("goals"))    || [];
 
-/////////////////////
-// ELEMENTOS
-/////////////////////
+
+/* ================= ELEMENTOS ================= */
 
 const taskInput = document.getElementById("taskInput");
-const taskList = document.getElementById("taskList");
+const taskList  = document.getElementById("taskList");
 
-const descInput = document.getElementById("descInput");
+const incomeDesc   = document.getElementById("incomeDesc");
+const incomeAmount = document.getElementById("incomeAmount");
+const incomeList   = document.getElementById("incomeList");
+const incomeTotal  = document.getElementById("incomeTotal");
+
+const descInput   = document.getElementById("descInput");
 const amountInput = document.getElementById("amountInput");
 const expenseList = document.getElementById("expenseList");
-const totalSpan = document.getElementById("total");
-
-const incomeDesc = document.getElementById("incomeDesc");
-const incomeAmount = document.getElementById("incomeAmount");
-const incomeList = document.getElementById("incomeList");
-const incomeTotal = document.getElementById("incomeTotal");
+const expenseTotal= document.getElementById("expenseTotal");
 
 const goalInput = document.getElementById("goalInput");
-const goalList = document.getElementById("goalList");
-const showIncome = document.getElementById("showIncome");
-const showExpense = document.getElementById("showExpense");
-const balanceSpan = document.getElementById("balance");
+const goalList  = document.getElementById("goalList");
 
-/////////////////////
-// GUARDAR
-/////////////////////
+const bIncome  = document.getElementById("bIncome");
+const bExpense = document.getElementById("bExpense");
+const balanceText = document.getElementById("balanceText");
+
+
+/* ================= GUARDAR ================= */
 
 function saveData(){
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-    localStorage.setItem("incomes", JSON.stringify(incomes));
-    localStorage.setItem("goals", JSON.stringify(goals));
+
+localStorage.setItem("tasks",JSON.stringify(tasks));
+localStorage.setItem("incomes",JSON.stringify(incomes));
+localStorage.setItem("expenses",JSON.stringify(expenses));
+localStorage.setItem("goals",JSON.stringify(goals));
+
 }
 
-/////////////////////
-// RENDER
-/////////////////////
+
+/* ================= RENDER ================= */
+
+let chart;
 
 function render(){
 
-    // TAREAS
-    taskList.innerHTML = "";
+/* TAREAS */
 
-    tasks.forEach((t,i)=>{
-        const li = document.createElement("li");
+taskList.innerHTML="";
 
-        li.textContent = t;
+tasks.forEach((t,i)=>{
 
-        li.onclick = ()=>{
-            tasks.splice(i,1);
-            saveData();
-            render();
-        };
+const li=document.createElement("li");
+li.textContent=t;
 
-        taskList.appendChild(li);
-    });
+li.onclick=()=>{
+tasks.splice(i,1);
+saveData();
+render();
+};
 
+taskList.appendChild(li);
 
-    // GASTOS
-    expenseList.innerHTML = "";
-    let total = 0;
-
-    expenses.forEach((e,i)=>{
-
-        const li = document.createElement("li");
-
-        li.textContent = `${e.desc} - $${e.amount}`;
-
-        li.onclick = ()=>{
-            expenses.splice(i,1);
-            saveData();
-            render();
-        };
-
-        total += Number(e.amount);
-
-        expenseList.appendChild(li);
-    });
-
-    totalSpan.textContent = total;
+});
 
 
-    // INGRESOS
-    incomeList.innerHTML = "";
-    let totalIncome = 0;
+/* INGRESOS */
 
-    incomes.forEach((inc,i)=>{
+incomeList.innerHTML="";
+let totalInc=0;
 
-        const li = document.createElement("li");
+incomes.forEach((e,i)=>{
 
-        li.textContent = `${inc.desc} - $${inc.amount}`;
+const li=document.createElement("li");
+li.textContent=`${e.desc} - $${e.amount}`;
 
-        li.onclick = ()=>{
-            incomes.splice(i,1);
-            saveData();
-            render();
-        };
+li.onclick=()=>{
+incomes.splice(i,1);
+saveData();
+render();
+};
 
-        totalIncome += Number(inc.amount);
+totalInc+=Number(e.amount);
 
-        incomeList.appendChild(li);
-    });
+incomeList.appendChild(li);
 
-    incomeTotal.textContent = totalIncome;
-showIncome.textContent = totalIncome;
-showExpense.textContent = total;
+});
 
-const balance = totalIncome - total;
-balanceSpan.textContent = balance;
+incomeTotal.textContent=totalInc;
 
-if(balance >= 0){
-    balanceSpan.style.color = "lime";
-}else{
-    balanceSpan.style.color = "red";
+
+/* GASTOS */
+
+expenseList.innerHTML="";
+let totalExp=0;
+
+expenses.forEach((e,i)=>{
+
+const li=document.createElement("li");
+li.textContent=`${e.desc} - $${e.amount}`;
+
+li.onclick=()=>{
+expenses.splice(i,1);
+saveData();
+render();
+};
+
+totalExp+=Number(e.amount);
+
+expenseList.appendChild(li);
+
+});
+
+expenseTotal.textContent=totalExp;
+
+
+/* METAS */
+
+goalList.innerHTML="";
+
+goals.forEach((g,i)=>{
+
+const li=document.createElement("li");
+li.textContent=g;
+
+li.onclick=()=>{
+goals.splice(i,1);
+saveData();
+render();
+};
+
+goalList.appendChild(li);
+
+});
+
+
+/* BALANCE */
+
+bIncome.textContent=totalInc;
+bExpense.textContent=totalExp;
+
+const balance=totalInc-totalExp;
+
+if(balance>0){
+balanceText.textContent=`🟢 Vas ganando $${balance}`;
+balanceText.style.color="lime";
+}
+else if(balance<0){
+balanceText.textContent=`🔴 Estás perdiendo $${Math.abs(balance)}`;
+balanceText.style.color="red";
+}
+else{
+balanceText.textContent="⚪ En equilibrio";
+balanceText.style.color="white";
 }
 
-    // METAS
-    goalList.innerHTML = "";
 
-    goals.forEach((g,i)=>{
+/* GRAFICO */
 
-        const li = document.createElement("li");
+if(chart) chart.destroy();
 
-        li.textContent = g;
+const ctx=document.getElementById("chart");
 
-        li.onclick = ()=>{
-            goals.splice(i,1);
-            saveData();
-            render();
-        };
+chart=new Chart(ctx,{
+type:"bar",
+data:{
+labels:["Ingresos","Gastos"],
+datasets:[{
+label:"Balance",
+data:[totalInc,totalExp],
+backgroundColor:["#22c55e","#ef4444"]
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{display:false}
+}
+}
+});
 
-        goalList.appendChild(li);
-    });
 }
 
-/////////////////////
-// BOTONES
-/////////////////////
+
+/* ================= BOTONES ================= */
 
 function addTask(){
 
-    if(taskInput.value==="") return;
+if(!taskInput.value) return;
 
-    tasks.push(taskInput.value);
+tasks.push(taskInput.value);
+taskInput.value="";
 
-    taskInput.value="";
+saveData();
+render();
 
-    saveData();
-    render();
-}
-
-
-function addExpense(){
-
-    if(descInput.value==="" || amountInput.value==="") return;
-
-    expenses.push({
-        desc: descInput.value,
-        amount: amountInput.value
-    });
-
-    descInput.value="";
-    amountInput.value="";
-
-    saveData();
-    render();
-}
-
-
-function addGoal(){
-
-    if(goalInput.value==="") return;
-
-    goals.push(goalInput.value);
-
-    goalInput.value="";
-
-    saveData();
-    render();
 }
 
 
 function addIncome(){
 
-    if(incomeDesc.value==="" || incomeAmount.value==="") return;
+if(!incomeDesc.value || !incomeAmount.value) return;
 
-    incomes.push({
-        desc: incomeDesc.value,
-        amount: incomeAmount.value
-    });
+incomes.push({
+desc:incomeDesc.value,
+amount:incomeAmount.value
+});
 
-    incomeDesc.value="";
-    incomeAmount.value="";
+incomeDesc.value="";
+incomeAmount.value="";
 
-    saveData();
-    render();
+saveData();
+render();
+
 }
 
-/////////////////////
-// INICIAR
-/////////////////////
+
+function addExpense(){
+
+if(!descInput.value || !amountInput.value) return;
+
+expenses.push({
+desc:descInput.value,
+amount:amountInput.value
+});
+
+descInput.value="";
+amountInput.value="";
+
+saveData();
+render();
+
+}
+
+
+function addGoal(){
+
+if(!goalInput.value) return;
+
+goals.push(goalInput.value);
+goalInput.value="";
+
+saveData();
+render();
+
+}
+
+
+/* ================= INICIO ================= */
 
 render();
 
