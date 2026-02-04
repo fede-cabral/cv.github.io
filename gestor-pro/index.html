@@ -80,10 +80,6 @@ const totalSpan = document.getElementById("total");
 
 const goalInput = document.getElementById("goalInput");
 const goalList = document.getElementById("goalList");
-const incomeDesc = document.getElementById("incomeDesc");
-const incomeAmount = document.getElementById("incomeAmount");
-const incomeList = document.getElementById("incomeList");
-const incomeTotal = document.getElementById("incomeTotal");
 
 // ====== GUARDAR ======
 function saveData() {
@@ -190,7 +186,16 @@ function addExpense(){
 }
 
 function addGoal(){
-  function addIncome(){
+    if(goalInput.value==="") return;
+
+    goals.push(goalInput.value);
+    goalInput.value="";
+    saveData();
+    render();
+}
+
+// ===== INGRESOS =====
+function addIncome(){
 
     if(incomeDesc.value === "" || incomeAmount.value === "") return;
 
@@ -203,9 +208,7 @@ function addGoal(){
     incomeAmount.value = "";
 
     saveData();
-    render();
-}
-    
+  render();
 </script>
     
 </body>
