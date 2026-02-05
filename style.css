@@ -197,16 +197,24 @@ p {
 /* BOTON CV */
 
 .btn-cv {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background: #00bfff;
-  color: #000;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 25px; /* Aumentar relleno para mayor tamaño */
+    background: linear-gradient(45deg, #00bfff, #00ced1); /* Degradado llamativo */
+    color: #fff; /* Texto blanco para mejor contraste */
+    border-radius: 30px; /* Bordes más redondeados */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
+    transition: all 0.3s ease; /* Transición suave */
+    text-transform: uppercase; /* Opcional: mayúsculas */
+    letter-spacing: 1px;
 }
 
 .btn-cv:hover {
-  background: #00ffcc;
+    background: linear-gradient(45deg, #00ced1, #00bfff); /* Invertir degradado */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
 }
+
