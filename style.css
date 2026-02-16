@@ -275,6 +275,18 @@ a { text-decoration: none; color: inherit; transition: color 0.3s; }
 }
 /* --- ESTILOS DE IMPRESIÓN (Para Guardar como PDF) --- */
 @media print {
+/* Ajuste de foto para impresión */
+  .hero-image {
+    border: none;
+    box-shadow: none;
+    width: 150px; /* Un poco más chica para que no ocupe tanto */
+    height: 150px;
+  }
+  
+  .hero-content {
+    justify-content: flex-start; /* Alinear a la izquierda junto al texto */
+    gap: 2rem;
+  }
   /* 1. Resetear colores para documento formal (Fondo blanco, texto negro) */
   :root {
     --bg-color: #ffffff;
@@ -290,11 +302,11 @@ a { text-decoration: none; color: inherit; transition: color 0.3s; }
     font-size: 11pt; /* Tamaño estándar de lectura */
   }
 
-  /* 2. Ocultar elementos que no sirven en papel/PDF */
+ /* 2. Ocultar elementos que no sirven en papel/PDF */
   .btn-primary, 
   .btn-social, 
   .btn-link, 
-  .hero-image-container, /* Opcional: Ocultar foto si quieres ahorrar espacio */
+  /* .hero-image-container,  <-- BORRADO */
   .footer {
     display: none !important;
   }
@@ -363,4 +375,5 @@ a { text-decoration: none; color: inherit; transition: color 0.3s; }
     color: #555;
   }
 }
+
 
