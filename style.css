@@ -273,3 +273,93 @@ a { text-decoration: none; color: inherit; transition: color 0.3s; }
   .tags { justify-content: center; }
   .project-header { flex-direction: column; gap: 0.5rem; }
 }
+/* --- ESTILOS DE IMPRESIÓN (Para Guardar como PDF) --- */
+@media print {
+  /* 1. Resetear colores para documento formal (Fondo blanco, texto negro) */
+  :root {
+    --bg-color: #ffffff;
+    --card-bg: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --accent-color: #000000; /* O un azul oscuro #0f172a si prefieres color */
+  }
+
+  body {
+    background-color: #fff;
+    color: #000;
+    font-size: 11pt; /* Tamaño estándar de lectura */
+  }
+
+  /* 2. Ocultar elementos que no sirven en papel/PDF */
+  .btn-primary, 
+  .btn-social, 
+  .btn-link, 
+  .hero-image-container, /* Opcional: Ocultar foto si quieres ahorrar espacio */
+  .footer {
+    display: none !important;
+  }
+
+  /* 3. Ajustes de Layout */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 1rem 0;
+    border-bottom: 2px solid #000;
+    background: none;
+  }
+
+  .hero-text h1 {
+    font-size: 24pt;
+    color: #000;
+    background: none;
+    -webkit-text-fill-color: initial;
+  }
+
+  .hero-text h2 {
+    font-size: 14pt;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .section {
+    padding: 1rem 0;
+    page-break-inside: avoid; /* Evita que una sección se corte a la mitad */
+  }
+
+  .section-title {
+    font-size: 16pt;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+
+  /* 4. Proyectos y Skills en lista simple */
+  .project-grid {
+    display: block; /* Quitar grid para que sea lista vertical */
+  }
+
+  .project-card {
+    border: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    box-shadow: none;
+  }
+
+  .tag {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    font-size: 9pt;
+  }
+
+  /* Mostrar URLs de los enlaces para que se puedan leer en papel */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+}
