@@ -274,106 +274,81 @@ a { text-decoration: none; color: inherit; transition: color 0.3s; }
   .project-header { flex-direction: column; gap: 0.5rem; }
 }
 /* --- ESTILOS DE IMPRESIÓN (Para Guardar como PDF) --- */
+/* --- ESTILOS DE IMPRESIÓN (Para Guardar como PDF) --- */
 @media print {
-/* Ajuste de foto para impresión */
-  .hero-image {
-    border: none;
-    box-shadow: none;
-    width: 150px; /* Un poco más chica para que no ocupe tanto */
-    height: 150px;
-  }
   
+  /* 1. FORZAR VISIBILIDAD DE LA FOTO */
+  .hero-image-container, 
+  .hero-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .hero-image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #333; /* Borde simple para que destaque */
+    border-radius: 50%; /* Redonda */
+    object-fit: cover;
+  }
+
+  /* 2. Ajuste de Layout del Encabezado */
   .hero-content {
-    justify-content: flex-start; /* Alinear a la izquierda junto al texto */
+    flex-direction: row; /* Mantener foto y texto lado a lado */
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 2rem;
   }
-  /* 1. Resetear colores para documento formal (Fondo blanco, texto negro) */
+
+  .hero-text {
+    flex: 1; /* Que el texto ocupe el resto del espacio */
+  }
+
+  /* 3. Resetear colores (Blanco y Negro) */
   :root {
     --bg-color: #ffffff;
     --card-bg: #ffffff;
     --text-primary: #000000;
     --text-secondary: #333333;
-    --accent-color: #000000; /* O un azul oscuro #0f172a si prefieres color */
+    --accent-color: #000000;
   }
 
   body {
     background-color: #fff;
     color: #000;
-    font-size: 11pt; /* Tamaño estándar de lectura */
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact; /* Importante para Chrome */
+    print-color-adjust: exact;
   }
 
- /* 2. Ocultar elementos que no sirven en papel/PDF */
+  /* 4. Ocultar botones y elementos innecesarios */
   .btn-primary, 
   .btn-social, 
   .btn-link, 
-  /* .hero-image-container,  <-- BORRADO */
   .footer {
     display: none !important;
   }
 
-  /* 3. Ajustes de Layout */
-  .container {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-  }
+  /* 5. Limpieza general */
+  .container { width: 100%; max-width: 100%; padding: 0; margin: 0; }
+  .hero { padding: 1rem 0; border-bottom: 2px solid #000; background: none !important; }
+  
+  .hero-text h1 { font-size: 22pt; color: #000; margin: 0; }
+  .hero-text h2 { font-size: 14pt; color: #444; margin-bottom: 1rem; }
+  .summary { color: #000; font-size: 10pt; max-width: 100%; }
 
-  .hero {
-    padding: 1rem 0;
-    border-bottom: 2px solid #000;
-    background: none;
-  }
+  .section { padding: 1rem 0; page-break-inside: avoid; }
+  .section-title { font-size: 14pt; border-bottom: 1px solid #ccc; margin-bottom: 10px; }
+  
+  /* Proyectos en lista */
+  .project-grid { display: block; }
+  .project-card { border: none; padding: 0; margin-bottom: 1rem; box-shadow: none; page-break-inside: avoid; }
+  .project-header h4 { display: inline-block; margin-right: 10px; }
+  .badge { border: 1px solid #000; color: #000; background: none; }
+  
+  .tag { border: 1px solid #ccc; color: #000; background: #fff; font-size: 8pt; padding: 2px 8px; }
 
-  .hero-text h1 {
-    font-size: 24pt;
-    color: #000;
-    background: none;
-    -webkit-text-fill-color: initial;
-  }
-
-  .hero-text h2 {
-    font-size: 14pt;
-    color: #333;
-    margin-bottom: 0.5rem;
-  }
-
-  .section {
-    padding: 1rem 0;
-    page-break-inside: avoid; /* Evita que una sección se corte a la mitad */
-  }
-
-  .section-title {
-    font-size: 16pt;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-  }
-
-  /* 4. Proyectos y Skills en lista simple */
-  .project-grid {
-    display: block; /* Quitar grid para que sea lista vertical */
-  }
-
-  .project-card {
-    border: none;
-    padding: 0;
-    margin-bottom: 1.5rem;
-    box-shadow: none;
-  }
-
-  .tag {
-    border: 1px solid #000;
-    background: #fff;
-    color: #000;
-    font-size: 9pt;
-  }
-
-  /* Mostrar URLs de los enlaces para que se puedan leer en papel */
-  a[href^="http"]:after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    color: #555;
-  }
+  /* Mostrar enlaces como texto */
+  a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }
 }
-
-
