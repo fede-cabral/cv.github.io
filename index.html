@@ -1,111 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <title>Mi CV</title>
-  <link rel="stylesheet" href="./style.css?v=2">
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Federico Cabral</title>
+  <link rel="stylesheet" href="./style.css?v=3">
+  </head>
 
 <body>
 
-  <!-- TARJETA PRINCIPAL -->
   <div class="header">
 
-    <!-- FOTO -->
-    <img src="perfil.jpg" alt="Foto de Federico Cabral" class="foto-perfil">
+    <img src="perfil.jpg" alt="Federico Cabral" class="foto-perfil">
 
-    <!-- INFO -->
     <div class="info">
 
       <h1>Federico Cabral</h1>
 
-      <h2>Oficial del Ejército Argentino | Desarrollador en formación</h2>
+      <h2>Frontend Developer | Leadership & Team Management</h2>
 
-      <p>
-Oficial del Ejército Argentino con más de 12 años de experiencia en liderazgo y gestión,
-actualmente enfocado en desarrollo de software y soluciones digitales.
-</p>
-
-      <!-- SOBRE MI -->
-      <h3>Sobre mí</h3>
-
-      <p>
-        Me especializo en trabajo en equipo, disciplina y mejora continua,
-        con interés en programación web y tecnología.
+      <p class="summary">
+        Profesional con más de 12 años de experiencia liderando equipos de alto rendimiento en el Ejército Argentino. 
+        Transicionando al sector IT con una sólida base en disciplina operativa, resolución de problemas complejos 
+        y desarrollo Frontend. Busco aplicar mi capacidad de gestión y ejecución en el desarrollo de software.
       </p>
 
-     <h3>Tecnologías</h3>
-
-<ul class="skills">
-  <li>Frontend: HTML, CSS, JavaScript</li>
-  <li>Control de versiones: Git / GitHub</li>
-  <li>Datos: SQL, Excel</li>
-  <li>Herramientas: VS Code, GitHub Pages</li>
-</ul>
-
-      <!-- OBJETIVO -->
-      <h3>Objetivo Profesional</h3>
-
+      <h3>Perfil Profesional</h3>
       <p>
-        Integrarme a un equipo de desarrollo donde pueda aportar compromiso,
-        responsabilidad y seguir creciendo como programador.
+        Mi carrera militar me ha forjado en la <strong>toma de decisiones bajo presión</strong> y la <strong>adaptabilidad</strong>. 
+        Hoy, canalizo esa misma disciplina en el código: escribo software limpio, estructurado y orientado a objetivos. 
+        Me apasiona la lógica de programación y la creación de interfaces eficientes.
       </p>
-<!-- PROYECTOS -->
-<h3>Proyectos</h3>
 
-<div class="proyectos">
+      <h3>Stack Tecnológico</h3>
+      <ul class="skills">
+        <li><strong>Core:</strong> HTML5, CSS3, Modern JavaScript (ES6+)</li>
+        <li><strong>Tools:</strong> Git, GitHub, VS Code, Chrome DevTools</li>
+        <li><strong>Data & Logic:</strong> DOM Manipulation, LocalStorage, JSON, SQL Basics</li>
+        <li><strong>Soft Skills:</strong> Liderazgo, Gestión de Tiempos, Trabajo en Equipo, Resiliencia</li>
+      </ul>
 
-  <div class="proyecto-card">
-    <h4>💻 Gestor Personal Pro - FORJAX</h4>
-    <p>
-      Aplicación web para gestionar ingresos, gastos y presupuestos mensuales.
-      Incluye gráficos, exportación a Excel y balance automático.
-    </p>
-    <a href="https://fede-cabral.github.io/gestor-pro/" target="_blank">
-      Ver proyecto
-    </a>
-  </div>
+      <h3>Objetivo</h3>
+      <p>
+        Aportar valor inmediato a un equipo de desarrollo, combinando mis habilidades técnicas en crecimiento 
+        con una madurez profesional consolidada en gestión y responsabilidad.
+      </p>
 
-  <div class="proyecto-card">
-    <h4>📊 Control Financiero en Excel</h4>
-    <p>
-      Sistema automatizado en Excel para seguimiento de finanzas personales,
-      cálculo de balances y progreso de metas.
-    </p>
-  </div>
+      <h3>Portafolio Destacado</h3>
 
-</div>
+      <div class="proyectos">
+
+        <div class="proyecto-card">
+          <h4>🚀 FORJAX Terminal - Financial Suite</h4>
+          <p>
+            <strong>Single Page Application (SPA)</strong> desarrollada en Vanilla JavaScript.
+            Sistema completo de gestión financiera con persistencia de datos local.
+          </p>
+          <ul>
+            <li>Arquitectura modular orientada a objetos (POO).</li>
+            <li>Persistencia de datos mediante <strong>LocalStorage</strong> y manejo de JSON.</li>
+            <li>Visualización de datos con <strong>Chart.js</strong> y manipulación dinámica del DOM.</li>
+            <li>Diseño UI/UX moderno y responsivo.</li>
+          </ul>
+          <br>
+          <a href="https://fede-cabral.github.io/gestor-pro/" target="_blank" class="btn-link">
+            Ver Demo en Vivo
+          </a>
+          |
+          <a href="https://github.com/fede-cabral/gestor-pro" target="_blank" class="btn-link">
+            Ver Código
+          </a>
+        </div>
+
+        <div class="proyecto-card">
+          <h4>📊 Sistema de Control Financiero</h4>
+          <p>
+            Desarrollo de herramientas automatizadas en <strong>Excel</strong> para análisis de datos, 
+            proyecciones financieras y seguimiento de KPIs personales. Foco en lógica de datos y estructura.
+          </p>
+        </div>
+
+      </div>
       
-      <!-- CONTACTO -->
-<h3>Contacto</h3>
-
-<div class="contacto">
-  <p>
-<a href="cv.pdf" class="btn-cv" download>
-  📄 Descargar CV
-</a>
-</p>
- <p>Email: federicocabral18@gmail.com</p>
-<p>
-LinkedIn:
-<a href="https://www.linkedin.com/in/federico-cabral-27660b221" target="_blank">
-Ver perfil
-</a>
-</p>
-<p>
-GitHub:
-<a href="https://github.com/fede-cabral" target="_blank">
-github.com/fede-cabral
-</a>
-</p>
-</div>
+      <h3>Contacto</h3>
+      <div class="contacto">
+        <a href="cv.pdf" class="btn-cv" download>📥 Descargar CV (PDF)</a>
+        <p>📧 federicocabral18@gmail.com</p>
+        <p>🔗 <a href="https://www.linkedin.com/in/federico-cabral-27660b221" target="_blank">linkedin.com/in/federico-cabral</a></p>
+        <p>💻 <a href="https://github.com/fede-cabral" target="_blank">github.com/fede-cabral</a></p>
+      </div>
 
     </div>
   </div>
 
 </body>
-
 </html>
 
 
