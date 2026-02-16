@@ -3,101 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV - Federico Cabral</title>
-  <link rel="stylesheet" href="./style.css?v=3">
-  </head>
+  <title>Federico Cabral - Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
 
-  <div class="header">
-
-    <img src="perfil.jpg" alt="Federico Cabral" class="foto-perfil">
-
-    <div class="info">
-
-      <h1>Federico Cabral</h1>
-
-      <h2>Frontend Developer | Leadership & Team Management</h2>
-
-      <p class="summary">
-        Profesional con más de 12 años de experiencia liderando equipos de alto rendimiento en el Ejército Argentino. 
-        Transicionando al sector IT con una sólida base en disciplina operativa, resolución de problemas complejos 
-        y desarrollo Frontend. Busco aplicar mi capacidad de gestión y ejecución en el desarrollo de software.
-      </p>
-
-      <h3>Perfil Profesional</h3>
-      <p>
-        Mi carrera militar me ha forjado en la <strong>toma de decisiones bajo presión</strong> y la <strong>adaptabilidad</strong>. 
-        Hoy, canalizo esa misma disciplina en el código: escribo software limpio, estructurado y orientado a objetivos. 
-        Me apasiona la lógica de programación y la creación de interfaces eficientes.
-      </p>
-
-      <h3>Stack Tecnológico</h3>
-      <ul class="skills">
-        <li><strong>Core:</strong> HTML5, CSS3, Modern JavaScript (ES6+)</li>
-        <li><strong>Tools:</strong> Git, GitHub, VS Code, Chrome DevTools</li>
-        <li><strong>Data & Logic:</strong> DOM Manipulation, LocalStorage, JSON, SQL Basics</li>
-        <li><strong>Soft Skills:</strong> Liderazgo, Gestión de Tiempos, Trabajo en Equipo, Resiliencia</li>
-      </ul>
-
-      <h3>Objetivo</h3>
-      <p>
-        Aportar valor inmediato a un equipo de desarrollo, combinando mis habilidades técnicas en crecimiento 
-        con una madurez profesional consolidada en gestión y responsabilidad.
-      </p>
-
-      <h3>Portafolio Destacado</h3>
-
-      <div class="proyectos">
-
-        <div class="proyecto-card">
-          <h4>🚀 FORJAX Terminal - Financial Suite</h4>
-          <p>
-            <strong>Single Page Application (SPA)</strong> desarrollada en Vanilla JavaScript.
-            Sistema completo de gestión financiera con persistencia de datos local.
-          </p>
-          <ul>
-            <li>Arquitectura modular orientada a objetos (POO).</li>
-            <li>Persistencia de datos mediante <strong>LocalStorage</strong> y manejo de JSON.</li>
-            <li>Visualización de datos con <strong>Chart.js</strong> y manipulación dinámica del DOM.</li>
-            <li>Diseño UI/UX moderno y responsivo.</li>
-          </ul>
-          <br>
-          <a href="https://fede-cabral.github.io/gestor-pro/" target="_blank" class="btn-link">
-            Ver Demo en Vivo
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Federico Cabral</h1>
+        <h2>Frontend Developer | Leadership & Team Management</h2>
+        <p class="summary">
+          Ex-Oficial del Ejército Argentino con +12 años liderando equipos bajo presión. 
+          Hoy, aplico esa disciplina, adaptabilidad y enfoque a objetivos en el desarrollo de software, 
+          creando interfaces web limpias y funcionales.
+        </p>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/federico-cabral-27660b221" target="_blank" class="btn-social" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
           </a>
-          |
-          <a href="https://github.com/fede-cabral/gestor-pro" target="_blank" class="btn-link">
-            Ver Código
+          <a href="https://github.com/fede-cabral" target="_blank" class="btn-social" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:federicocabral18@gmail.com" class="btn-social" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="cv.pdf" download class="btn-primary">
+            <i class="fas fa-file-pdf"></i> Descargar CV
           </a>
         </div>
-
-        <div class="proyecto-card">
-          <h4>📊 Sistema de Control Financiero</h4>
-          <p>
-            Desarrollo de herramientas automatizadas en <strong>Excel</strong> para análisis de datos, 
-            proyecciones financieras y seguimiento de KPIs personales. Foco en lógica de datos y estructura.
-          </p>
-        </div>
-
       </div>
       
-      <h3>Contacto</h3>
-      <div class="contacto">
-        <a href="cv.pdf" class="btn-cv" download>📥 Descargar CV (PDF)</a>
-        <p>📧 federicocabral18@gmail.com</p>
-        <p>🔗 <a href="https://www.linkedin.com/in/federico-cabral-27660b221" target="_blank">linkedin.com/in/federico-cabral</a></p>
-        <p>💻 <a href="https://github.com/fede-cabral" target="_blank">github.com/fede-cabral</a></p>
+      <div class="hero-image-container">
+        <img src="image_5.png" alt="Federico Cabral" class="hero-image">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="section about">
+      <h3 class="section-title"><i class="fas fa-user-shield"></i> Perfil Profesional</h3>
+      <p>
+        Mi carrera militar no es un pasado distante, es mi ventaja competitiva. Me forjó en la 
+        <strong>toma de decisiones críticas</strong>, la <strong>gestión de recursos</strong> y la 
+        <strong>resiliencia</strong> ante la adversidad. Transfiero estas "soft skills" directamente al código: 
+        escribo software estructurado, cumplo plazos y me comunico efectivamente con el equipo. 
+        Busco un rol donde mi madurez profesional y mis habilidades técnicas en crecimiento generen impacto desde el día uno.
+      </p>
+    </section>
+
+    <section class="section skills">
+      <h3 class="section-title"><i class="fas fa-code"></i> Stack Tecnológico</h3>
+      
+      <div class="skill-category">
+        <h4>Frontend Core</h4>
+        <div class="tags">
+          <span class="tag html"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="tag css"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="tag js"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Herramientas & Flujo</h4>
+        <div class="tags">
+          <span class="tag git"><i class="fab fa-git-alt"></i> Git</span>
+          <span class="tag github"><i class="fab fa-github"></i> GitHub</span>
+          <span class="tag"><i class="fas fa-terminal"></i> Command Line</span>
+          <span class="tag"><i class="fas fa-code"></i> VS Code</span>
+        </div>
       </div>
 
+      <div class="skill-category">
+        <h4>Lógica & Datos</h4>
+        <div class="tags">
+          <span class="tag"><i class="fas fa-sitemap"></i> DOM Manipulation</span>
+          <span class="tag"><i class="fas fa-database"></i> LocalStorage</span>
+          <span class="tag"><i class="fas fa-file-code"></i> JSON</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects">
+      <h3 class="section-title"><i class="fas fa-laptop-code"></i> Portafolio Destacado</h3>
+      
+      <div class="project-grid">
+        
+        <article class="project-card featured">
+          <div class="project-header">
+            <h4>🚀 FORJAX Terminal - Financial Suite</h4>
+            <span class="badge">SPA / Vanilla JS</span>
+          </div>
+          <p>
+            Single Page Application (SPA) para gestión financiera personal. 
+            Simula un entorno de terminal futurista con un dashboard interactivo.
+          </p>
+          <ul>
+            <li><i class="fas fa-check"></i> Arquitectura modular (POO).</li>
+            <li><i class="fas fa-check"></i> Persistencia total con <strong>LocalStorage</strong>.</li>
+            <li><i class="fas fa-check"></i> Gráficos dinámicos con <strong>Chart.js</strong>.</li>
+            <li><i class="fas fa-check"></i> Modo "Pánico" integrado a la BIOS.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://fede-cabral.github.io/gestor-pro/" target="_blank" class="btn-link">
+              <i class="fas fa-external-link-alt"></i> Demo en Vivo
+            </a>
+            <a href="https://github.com/fede-cabral/gestor-pro" target="_blank" class="btn-link btn-link-secondary">
+              <i class="fab fa-github"></i> Ver Código
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <h4>📊 Sistema de Control Financiero</h4>
+            <span class="badge">Data Analysis</span>
+          </div>
+          <p>
+            Herramienta automatizada en <strong>Excel</strong> para análisis de datos financieros y proyecciones.
+          </p>
+          <ul>
+            <li><i class="fas fa-check"></i> Modelado de datos y tablas dinámicas.</li>
+            <li><i class="fas fa-check"></i> Dashboards interactivos para KPIs.</li>
+            <li><i class="fas fa-check"></i> Automatización de cálculos complejos.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Federico Cabral. Diseñado y programado con <i class="fas fa-heart"></i> y código.</p>
     </div>
-  </div>
+  </footer>
 
 </body>
 </html>
-
-
-
-
-
-
